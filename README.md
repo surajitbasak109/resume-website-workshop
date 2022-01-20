@@ -1,2 +1,1 @@
-# resume-website-workshop
-Resume website workshop
+# Resume website workshop
