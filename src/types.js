@@ -1,0 +1,13 @@
+export const ADD_FIRST_NAME = 'ADD_FIRST_NAME';
+export const ADD_LAST_NAME = 'ADD_LAST_NAME';
+export const ADD_ROLE = 'ADD_ROLE';
+export const ADD_EMAIL = 'ADD_EMAIL';
+export const ADD_PHONE = 'ADD_PHONE';
+export const ADD_FACEBOOK = 'ADD_FACEBOOK';
+export const ADD_TWITTER = 'ADD_TWITTER';
+export const ADD_LINKEDIN = 'ADD_LINKEDIN';
+export const ADD_GITHUB = 'ADD_GITHUB';
+export const ADD_ABOUT = 'ADD_ABOUT';
+export const ADD_SKILLS = 'ADD_SKILLS';
+export const ADD_EDUCATIONS = 'ADD_EDUCATIONS';
+export const ADD_WORKS = 'ADD_WORKS';

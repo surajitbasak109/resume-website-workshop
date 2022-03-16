@@ -1,4 +1,4 @@
-const SocialHandle = ({ icon, url, handle, setHandle }) => {
+const SocialHandle = ({ icon, url, handle, setHandle, handleType }) => {
     return (
         <div className="field">
             <div className="ui left action input">
@@ -10,7 +10,7 @@ const SocialHandle = ({ icon, url, handle, setHandle }) => {
                     type="text"
                     name="facebook"
                     value={handle}
-                    onChange={e => setHandle(e.target.value)}
+                    onChange={e => setHandle({ type: handleType, payload: e.target.value })}
                 />
             </div>
         </div>

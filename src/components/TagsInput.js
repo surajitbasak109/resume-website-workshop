@@ -1,8 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { ResumeContext } from '../ResumeContext';
+import { ADD_SKILLS } from '../types';
 import './TagsInput.css';
 
 const TagsInput = () => {
     const [tags, setTags] = useState([]);
+    const { dispatch } = useContext(ResumeContext);
+
+    useEffect(() => {
+        dispatch({ type: ADD_SKILLS, payload: tags });
+    }, [dispatch, tags]);
 
     const addTag = event => {
         if (event.key === 'Enter' && event.target.value !== '') {

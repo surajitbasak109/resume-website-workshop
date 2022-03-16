@@ -1,33 +1,33 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import Mobile from './Mobile';
 import SocialHandle from './SocialHandle';
-
-const socialLinks = {
-    github: {
-        icon: 'icon github',
-        url: 'https://github.com/',
-    },
-    linkedin: {
-        icon: 'icon linkedin',
-        url: 'https://www.linkedin.com/in/',
-    },
-    facebook: {
-        icon: 'icon facebook',
-        url: 'https://facebook.com/',
-    },
-    twitter: {
-        icon: 'icon twitter',
-        url: 'https://twitter.com/',
-    },
-};
+import socialLinks from '../helpers/socialLinks';
+import { ResumeContext } from '../ResumeContext';
+import {
+    ADD_EMAIL,
+    ADD_FACEBOOK,
+    ADD_GITHUB,
+    ADD_LINKEDIN,
+    ADD_PHONE,
+    ADD_TWITTER,
+} from '../types';
 
 const ContactDetails = () => {
-    const [email, setEmail] = useState('');
-    const [mobile, setMobile] = useState('');
-    const [facebookHandle, setFacebookHandle] = useState('');
-    const [twitterHandle, setTwitterHandle] = useState('');
-    const [githubHandle, setGithubHandle] = useState('');
-    const [linkedinHandle, setLinkedinHandle] = useState('');
+    const context = useContext(ResumeContext);
+    const {
+        state: {
+			personalDetails: {
+				email,
+				phone,
+				facebookHandle,
+				twitterHandle,
+				githubHandle,
+				linkedinHandle,
+			}
+		},
+		dispatch
+    } = context;
+
     return (
         <div className="ui segment">
             <h3 className="ui center aligned header">Contact Details</h3>
@@ -39,34 +39,38 @@ const ContactDetails = () => {
                         name="email"
                         value={email}
                         placeholder="john@example.com"
-                        onChange={e => setEmail(e.target.value)}
+                        onChange={e => dispatch({ type: ADD_EMAIL, payload: e.target.value })}
                     />
                 </div>
             </div>
-            <Mobile mobile={mobile} onMobileChange={setMobile} />
+            <Mobile phone={phone} type={ADD_PHONE} onPhoneChange={dispatch} />
             <SocialHandle
                 icon={socialLinks.facebook.icon}
                 url={socialLinks.facebook.url}
                 handle={facebookHandle}
-                setHandle={setFacebookHandle}
+                handleType={ADD_FACEBOOK}
+                setHandle={dispatch}
             />
             <SocialHandle
                 icon={socialLinks.twitter.icon}
                 url={socialLinks.twitter.url}
+                handleType={ADD_TWITTER}
                 handle={twitterHandle}
-                setHandle={setTwitterHandle}
+                setHandle={dispatch}
             />
             <SocialHandle
                 icon={socialLinks.linkedin.icon}
                 url={socialLinks.linkedin.url}
+                handleType={ADD_LINKEDIN}
                 handle={linkedinHandle}
-                setHandle={setLinkedinHandle}
+                setHandle={dispatch}
             />
             <SocialHandle
                 icon={socialLinks.github.icon}
                 url={socialLinks.github.url}
+                handleType={ADD_GITHUB}
                 handle={githubHandle}
-                setHandle={setGithubHandle}
+                setHandle={dispatch}
             />
         </div>
     );

@@ -1,8 +1,9 @@
-const Mobile = ({ mobile, onMobileChange }) => {
+const Mobile = ({ phone, type, onPhoneChange }) => {
     const onInputChange = event => {
         const re = /^[0-9\b]+$/;
-        if (event.target.value === '' || re.test(event.target.value)) {
-            onMobileChange(event.target.value);
+        const value = event.target.value;
+        if (value === '' || re.test(value)) {
+            onPhoneChange({ type, payload: value });
         }
     };
     return (
@@ -11,11 +12,11 @@ const Mobile = ({ mobile, onMobileChange }) => {
                 <i className="phone icon"></i>
                 <input
                     type="text"
-                    name="mobile"
-                    value={mobile}
+                    name="phone"
+                    value={phone}
                     placeholder="9832098320"
                     onChange={onInputChange}
-					maxLength={10}
+                    maxLength={10}
                 />
             </div>
         </div>
